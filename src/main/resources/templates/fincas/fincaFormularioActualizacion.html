@@ -1,0 +1,21 @@
+/*<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Formulario de Actualizacion</title>
+</head>
+<body>
+<h1>FORMULARIO DE ACTUALIZACION</h1>
+<form th:action="@{/finca_/editar/{id}(id=${finca.id})}" th:object="${finca}" method="post">
+    <input type="hidden" th:field="*{id}" />
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" th:field="*{nombre}" /><br />
+    <label for="descripcion">Descripción:</label>
+    <input type="text" id="descripcion" th:field="*{descripcion}" /><br />
+    <label for="hectareas">Hectáreas:</label>
+    <input type="number" id="hectareas" th:field="*{hectareas}" /><br />
+    <label for="liberaciones">Liberaciones:</label>
+    <input type="number" id="liberaciones" th:field="*{liberaciones}" /><br />
+    <button type="submit">Guardar Cambios</button>
+</form>
+</body>
+</html>*/

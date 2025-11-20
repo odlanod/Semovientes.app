@@ -1,0 +1,35 @@
+
+/*<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lista de Fincas</title>
+</head>
+<body>
+<h1>Lista de Fincas</h1>
+<a th:href="@{/finca_/nueva}">Nueva Finca</a>
+<table>
+    <thead>
+    <tr>
+
+        <th>Nombre</th>
+        <th>Descripción</th>
+        <th>Hectáreas</th>
+        <th>Liberaciones</th>
+        <th>Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="finca : ${fincas}">
+        <td th:text="${finca.nombre}"></td>
+        <td th:text="${finca.descripcion}"></td>
+        <td th:text="${finca.hectareas}"></td>
+        <td th:text="${finca.liberaciones}"></td>
+        <td>
+            <a th:href="@{/finca_/editar/{id}(id=${finca.id})}">Editar</a>
+            <a th:href="@{/finca_/eliminar/{id}(id=${finca.id})}">Eliminar</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>*/

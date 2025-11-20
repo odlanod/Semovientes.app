@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lista de Animales</title>
+</head>
+<body>
+<h1>Lista de Animales</h1>
+<a th:href="@{/animales/}">Nuevo Registro de Semovientes</a>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Id Finca</th>
+        <th>Clase Animal</th>
+        <th>Raza</th>
+        <th>Nacimiento</th>
+        <th>Sexo</th>
+        <th>Peso</th>
+        <th>Estado</th>
+        <th>Descripcion </th>
+        <th>Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="animal : ${animales}">
+        <td th:text="${animal.id_finca}"></td>
+        <td th:text="${animal.tipo_animal}"></td>
+        <td th:text="${animal.raza}"></td>
+        <td th:text="${animal.fecha_nacimiento}"></td>
+        <td th:text="${animal.sexo}"></td>
+        <td th:text="${animal.peso}"></td>
+        <td th:text="${animal.estado_salud}"></td>
+        <td th:text="${animal.informacion_adicional}"></td>
+        <td>
+            <a th:href="@{/finca_/editar/{id}(id=${finca.id})}">Editar</a>
+            <a th:href="@{/finca_/eliminar/{id}(id=${finca.id})}">Eliminar</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
+
+/*// src/main/java/com/example/demo/controller/UserController.java
+
+import com.example.demo.model.User;
+import com.example.demo.service.UserService; // Asumiendo que usas una capa de servicio
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController // Combina @Controller y @ResponseBody
+@RequestMapping("/api/users") // URL base para todos los endpoints de usuario
+public class UserController {
+
+@Autowired
+private UserService userService; // Inyección del servicio
+
+// --- C (Crear) ---
+// POST http://localhost:8080/api/users
+@PostMapping
+// @RequestBody mapea el JSON de la solicitud al objeto User
+// ResponseEntity permite controlar el código de estado HTTP (201 CREATED)
+public ResponseEntity<User> createUser(@RequestBody User user) {
+    User newUser = userService.save(user);
+    return new ResponseEntity<>(newUser, HttpStatus.CREATED);
+    }
+
+    // --- R (Leer Todos) ---
+    // GET http://localhost:8080/api/users
+    @GetMapping
+    public ResponseEntity<List<User>> getAllUsers() {
+        List<User> users = userService.findAll();
+            // Devuelve una lista de objetos, que se serializa a un array JSON (200 OK)
+            return ResponseEntity.ok(users);
+            }
+
+            // --- R (Leer por ID) ---
+            // GET http://localhost:8080/api/users/5
+            @GetMapping("/{id}")
+            public ResponseEntity<User> getUserById(@PathVariable Long id) {
+                // Usa Optional para manejar el caso de que el usuario no exista
+                return userService.findById(id)
+                .map(ResponseEntity::ok) // Si lo encuentra, devuelve 200 OK
+                .orElseGet(() -> ResponseEntity.notFound().build()); // Si no, devuelve 404 NOT FOUND
+                }
+
+                // --- U (Actualizar) ---
+                // PUT http://localhost:8080/api/users/5
+                @PutMapping("/{id}")
+                public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User userDetails) {
+                    return userService.findById(id)
+                    .map(existingUser -> {
+                    // Lógica de actualización de campos
+                    existingUser.setName(userDetails.getName());
+                    existingUser.setEmail(userDetails.getEmail());
+
+                    User updatedUser = userService.save(existingUser);
+                    return ResponseEntity.ok(updatedUser); // 200 OK
+                    })
+                    .orElseGet(() -> ResponseEntity.notFound().build()); // 404 NOT FOUND
+                    }
+
+                    // --- D (Eliminar) ---
+                    // DELETE http://localhost:8080/api/users/5
+                    @DeleteMapping("/{id}")
+                    public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
+                        if (userService.existsById(id)) {
+                        userService.deleteById(id);
+                        // 204 NO CONTENT es el código estándar para una eliminación exitosa sin cuerpo de respuesta
+                        return ResponseEntity.noContent().build();
+                        } else {
+                        return ResponseEntity.notFound().build(); // 404 NOT FOUND
+                        }
+                        }
+                        }*/
