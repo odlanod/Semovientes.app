@@ -1,0 +1,35 @@
+package Semovientes.app.model;
+
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "vacunas")
+public class Vacunas {
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    
+    @Column(name="nombre", nullable=false, length=40)
+    private String nombre;
+
+  
+    public Vacunas() {}
+  
+  public Vacunas(int id, String nombre) {
+    this.nombre= nombre;
+  }
+
+  
+    public int getId() {
+        return id; }
+
+    public String getNombre() {
+        return nombre; }
+
+    public void setId(int id) {
+        this.id = id; }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;}
+}
