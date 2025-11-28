@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 public class Animales {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_animal;
+    private Long id_animal;
     
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="finca_id")
