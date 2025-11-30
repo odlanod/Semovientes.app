@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
+import java.util.Optional;
+
 @Service
 public class AnimalesService {
 
@@ -15,17 +17,39 @@ public class AnimalesService {
         return animalesRepository.findAll();
     }
 
-    //Traer Animal Por Id --------------------------------------------------------
-    public Animales obtenerAnimalPorId(int id){
-        return animalesRepository.findById(id).orElse(null);
+    public Optional<Animales> obtenerAnimalPorId(long id){
+        return animalesRepository.findById(id);
     }
 
     //Insertar nuevo Animal ---------------------------------------------------------
-    public Animales guardarAnimales(Animales animales){
+     public Animales guardarAnimal(Animales animales){
         return animalesRepository.save(animales);
+    }
+
+    public Boolean eliminarAnimalPorId(long id){
+        if(animalesRepository.existsById(id)){
+            animalesRepository.deleteById(id);
+            return ! animalesRepository.existsById(id);
+        }else{return false;}
+    }
+
+    public Optional<Animales> actualizarAnimales(long id, Animales animalActualizado){
+
+        return animalesRepository.findById(id)
+                .map(fincaExistente->{
+
+                });
+
+        }
+
+
+    
+    
     }
 
 
 
 
-}*/
+}
+
+*/
