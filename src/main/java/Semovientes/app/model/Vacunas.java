@@ -13,23 +13,26 @@ public class Vacunas {
     @Column(name="nombre", nullable=false, length=40)
     private String nombre;
 
-  
-    public Vacunas() {}
-  
-  public Vacunas(int id, String nombre) {
-    this.nombre= nombre;
-  }
+    public Vacunas(){}
 
-  
-    public int getId() {
-        return id; }
+    public Vacunas(int id, String nombre) {
+        this.id = id;
+        this.nombre = nombre;
+    }
 
     public String getNombre() {
-        return nombre; }
-
-    public void setId(int id) {
-        this.id = id; }
+        return nombre;
+    }
 
     public void setNombre(String nombre) {
-        this.nombre = nombre;}
+        this.nombre = nombre;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 }

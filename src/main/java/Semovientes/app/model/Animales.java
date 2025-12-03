@@ -34,8 +34,7 @@ public class Animales {
     @Column(name="peso_inicial", nullable= false, length= 20)
     private double pesoInicial;
 
-    @Column(name="estado_animal", nullable=false, length=30)
-    private String estadoAnimal;
+    @Column(name="estado_animal", nullable=false, length=hjhe String estadoAnimal;
 
     @ManyToOne
     @JoinColumn(name="id_madre",nullable=false)
@@ -45,7 +44,117 @@ public class Animales {
     @JoinColumn(name="id_padre",nullable=false)
     private Animales id_padre;
 
+    public Animales(){}
 
+   public Animales(Long id_animal, int id_finca, String nombre, String especie, String raza, String sexo, String adquisicion, LocalDate fecha, double pesoInicial, String estadoAnimal, Animales id_madre, Animales id_padre) {
+      this.id_animal = id_animal;
+      this.id_finca = id_finca;
+      this.nombre = nombre;
+      this.especie = especie;
+      this.raza = raza;
+      this.sexo = sexo;
+      this.adquisicion = adquisicion;
+      this.fecha = fecha;
+      this.pesoInicial = pesoInicial;
+      this.estadoAnimal = estadoAnimal;
+      this.id_madre = id_madre;
+      this.id_padre = id_padre;
+   }
 
+   public Long getId_animal() {
+      return id_animal;
+   }
+
+   public void setId_animal(Long id_animal) {
+      this.id_animal = id_animal;
+   }
+
+   public int getId_finca() {
+      return id_finca;
+   }
+
+   public void setId_finca(int id_finca) {
+      this.id_finca = id_finca;
+   }
+
+   public String getNombre() {
+      return nombre;
+   }
+
+   public void setNombre(String nombre) {
+      this.nombre = nombre;
+   }
+
+   public String getEspecie() {
+      return especie;
+   }
+
+   public void setEspecie(String especie) {
+      this.especie = especie;
+   }
+
+   public String getRaza() {
+      return raza;
+   }
+
+   public void setRaza(String raza) {
+      this.raza = raza;
+   }
+
+   public String getSexo() {
+      return sexo;
+   }
+
+   public void setSexo(String sexo) {
+      this.sexo = sexo;
+   }
+
+   public String getAdquisicion() {
+      return adquisicion;
+   }
+
+   public void setAdquisicion(String adquisicion) {
+      this.adquisicion = adquisicion;
+   }
+
+   public LocalDate getFecha() {
+      return fecha;
+   }
+
+   public void setFecha(LocalDate fecha) {
+      this.fecha = fecha;
+   }
+
+   public double getPesoInicial() {
+      return pesoInicial;
+   }
+
+   public void setPesoInicial(double pesoInicial) {
+      this.pesoInicial = pesoInicial;
+   }
+
+   public String getEstadoAnimal() {
+      return estadoAnimal;
+   }
+
+   public void setEstadoAnimal(String estadoAnimal) {
+      this.estadoAnimal = estadoAnimal;
+   }
+
+   public Animales getId_madre() {
+      return id_madre;
+   }
+
+   public void setId_madre(Animales id_madre) {
+      this.id_madre = id_madre;
+   }
+
+   public Animales getId_padre() {
+      return id_padre;
+   }
+
+   public void setId_padre(Animales id_padre) {
+      this.id_padre = id_padre;
+   }
 }
 
