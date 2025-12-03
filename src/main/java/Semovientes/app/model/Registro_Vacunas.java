@@ -1,4 +1,4 @@
-/*package Semovientes.app.model;
+package Semovientes.app.model;
 import jakarta.persistence.*;
 
 @Entity
@@ -34,5 +34,5 @@ import jakarta.persistence.*;
     
 
   
-  }*/
+  }
   
