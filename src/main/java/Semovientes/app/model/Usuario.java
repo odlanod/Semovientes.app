@@ -11,7 +11,7 @@ public class Usuario {
     private Long id;
 
     @OneToMany(mappedBy="usuario")
-    private List<Fincas> fincas;
+    private List<Fincas> fincas = new ArrayList<>();
 
     @Column(name="nombre_Usuario",nullable = false, length=30)
     private String nombre;
@@ -61,6 +61,10 @@ public class Usuario {
 
     public Long getId() {
         return id;
+    }
+
+    public Fincas getId_Fincas(){
+        return fincas;
     }
 
     public void setId(Long id) {
