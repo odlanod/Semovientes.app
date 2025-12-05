@@ -2,6 +2,9 @@ package Semovientes.app.model;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "vacunas")
 public class Vacunas {
@@ -12,6 +15,9 @@ public class Vacunas {
     
     @Column(name="nombre", nullable=false, length=40)
     private String nombre;
+
+    @OneToMany(mappedBy="vacuna")
+    private List<Registro_Vacunas> registroVacuna= new ArrayList<>();
 
     public Vacunas(){}
 

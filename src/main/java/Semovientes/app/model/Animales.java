@@ -2,6 +2,8 @@ package Semovientes.app.model;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Animales {
@@ -11,7 +13,7 @@ public class Animales {
 
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="finca_id")
-    private int id_finca;
+    private Fincas finca;
 
     @Column(name="nombre_animal", nullable=true, length=40)
     private String nombre;
@@ -34,21 +36,25 @@ public class Animales {
     @Column(name="peso_inicial", nullable= false, length= 20)
     private double pesoInicial;
 
-    @Column(name="estado_animal", nullable=false, length=hjhe String estadoAnimal;
+    @Column(name="estado_animal", nullable=false, length=30)
+    String estadoAnimal;
 
     @ManyToOne
-    @JoinColumn(name="id_madre",nullable=false)
+    @JoinColumn(name="id_madre",nullable=true)
     private Animales id_madre;
 
     @ManyToOne
-    @JoinColumn(name="id_padre",nullable=false)
+    @JoinColumn(name="id_padre",nullable=true)
     private Animales id_padre;
+
+    @OneToMany(mappedBy="animal")
+    private List<Registro_Vacunas> registroVacunas = new ArrayList<>();
 
     public Animales(){}
 
-   public Animales(Long id_animal, int id_finca, String nombre, String especie, String raza, String sexo, String adquisicion, LocalDate fecha, double pesoInicial, String estadoAnimal, Animales id_madre, Animales id_padre) {
+   public Animales(Long id_animal, Fincas finca, String nombre, String especie, String raza, String sexo, String adquisicion, LocalDate fecha, double pesoInicial, String estadoAnimal, Animales id_madre, Animales id_padre) {
       this.id_animal = id_animal;
-      this.id_finca = id_finca;
+      this.finca = finca;
       this.nombre = nombre;
       this.especie = especie;
       this.raza = raza;
@@ -69,12 +75,12 @@ public class Animales {
       this.id_animal = id_animal;
    }
 
-   public int getId_finca() {
-      return id_finca;
+   public Fincas getFinca() {
+      return finca;
    }
 
-   public void setId_finca(int id_finca) {
-      this.id_finca = id_finca;
+   public void setFinca(Fincas finca) {
+      this.finca= finca;
    }
 
    public String getNombre() {
@@ -153,8 +159,14 @@ public class Animales {
       return id_padre;
    }
 
+   public List<Registro_Vacunas> getRegistroVacunas() {
+        return registroVacunas;
+    }
+
    public void setId_padre(Animales id_padre) {
       this.id_padre = id_padre;
    }
+
+   /*exelente*/
 }
 
