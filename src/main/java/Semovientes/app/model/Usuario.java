@@ -63,7 +63,7 @@ public class Usuario {
         return id;
     }
 
-    public Fincas getId_Fincas(){
+    public List<Fincas> getFincas() {
         return fincas;
     }
 
