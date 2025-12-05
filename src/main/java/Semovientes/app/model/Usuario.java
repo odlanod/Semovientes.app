@@ -10,6 +10,9 @@ public class Usuario {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
 
+    @OneToMany(mappedBy="aplicador")
+    private List<Registro_Vacunas> registroVacuna= new ArrayList<>();
+
     @OneToMany(mappedBy="usuario")
     private List<Fincas> fincas = new ArrayList<>();
 
@@ -61,6 +64,10 @@ public class Usuario {
 
     public Long getId() {
         return id;
+    }
+
+    public List<Registro_Vacunas> registroVacunas(){
+        return registroVacuna;
     }
 
     public List<Fincas> getFincas() {
