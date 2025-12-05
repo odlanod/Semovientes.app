@@ -1,7 +1,5 @@
 package Semovientes.app.model;
-
 import jakarta.persistence.*;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +23,7 @@ public class Vacunas {
         this.id = id;
         this.nombre = nombre;
     }
-
+  /*getter and setter*/
     public String getNombre() {
         return nombre;
     }
@@ -40,5 +38,9 @@ public class Vacunas {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public List<Registro_Vacunas> getRegistroVacunas(){
+        return registroVacuna;
     }
 }
