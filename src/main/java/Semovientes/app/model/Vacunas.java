@@ -1,4 +1,5 @@
 package Semovientes.app.model;
+
 import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -6,41 +7,25 @@ import java.util.List;
 @Entity
 @Table(name = "vacunas")
 public class Vacunas {
-    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    
+
     @Column(name="nombre", nullable=false, length=40)
     private String nombre;
 
     @OneToMany(mappedBy="vacuna")
-    private List<Registro_Vacunas> registroVacuna= new ArrayList<>();
+    private List<Registro_Vacunas> registroVacuna = new ArrayList<>();
 
-    public Vacunas(){}
+    public Vacunas() {}
+    public Vacunas(String nombre) { this.nombre = nombre; }
 
-    public Vacunas(int id, String nombre) {
-        this.id = id;
-        this.nombre = nombre;
-    }
-  /*getter and setter*/
-    public String getNombre() {
-        return nombre;
-    }
+    // Getters y Setters
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+    public String getNombre() { return nombre; }
+    public void setNombre(String nombre) { this.nombre = nombre; }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public List<Registro_Vacunas> getRegistroVacunas(){
-        return registroVacuna;
-    }
+    public List<Registro_Vacunas> getRegistroVacunas() { return registroVacuna; }
 }
