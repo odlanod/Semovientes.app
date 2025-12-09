@@ -48,6 +48,9 @@ public class Usuario {
     @Column(name="genero_usuario", nullable=false, length=50)
     private String genero;
 
+    @OneToMany(mappedBy="usuario")
+    private List<Registro_Animales> registros= new ArrayList<>();
+
     public Usuario() {}
 
     public Usuario(String nombre, String apellidos, String cedula, String correoElectronico, LocalDate fecha_Nacimiento_usuario, String password, String rol, double sueldo, Boolean estado, String genero) {
@@ -99,4 +102,6 @@ public class Usuario {
 
     public String getGenero() { return genero; }
     public void setGenero(String genero) { this.genero = genero; }
+
+    public List<Registro_Animales> getRegistroAnimales(){return registros; }
 }
