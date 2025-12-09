@@ -50,6 +50,9 @@ public class Animales {
     @OneToMany(mappedBy="animal")
     private List<Registro_Vacunas> registroVacunas = new ArrayList<>();
 
+    @OneToMany(mappedBy="animal")
+    public List<Registro_Animales> registroAnimales= new ArrayList<>();
+
     public Animales() {}
 
     public Animales(Fincas finca, String nombre, String especie, String raza, String sexo, String adquisicion, LocalDate fecha, double pesoInicial, String estadoAnimal) {
@@ -102,4 +105,6 @@ public class Animales {
     public void setPadre(Animales padre) { this.padre = padre; }
 
     public List<Registro_Vacunas> getRegistroVacunas() { return registroVacunas; }
+
+    public List<Registro_Animales> getRegistroAnimales(){return registroAnimales;}
 }
