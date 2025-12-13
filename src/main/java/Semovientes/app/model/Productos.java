@@ -1,5 +1,6 @@
 package Semovientes.app.model;
 import jakarta.persistence.*;
+import java.math.BigDecimal;
 
 @Entity
 @Table(name = "Productos")
