@@ -1,5 +1,6 @@
-/*package Semovientes.app.service;
+package Semovientes.app.service;
 import Semovientes.app.model.Animales;
+import Semovientes.app.model.Fincas;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -11,6 +12,7 @@ public class AnimalesService {
 
     @Autowired
     private Semovientes.app.repository.AnimalesRepository animalesRepository;
+    private Semovientes.app.repository.fincasRepository fincaRepository;
 
     //Traer todos los Animaless--------------------------------------------------
     public List<Animales> obtenerTodasLosAnimales(){
@@ -22,8 +24,11 @@ public class AnimalesService {
     }
 
     //Insertar nuevo Animal ---------------------------------------------------------
-     public Animales guardarAnimal(Animales animales){
-        return animalesRepository.save(animales);
+     public Animales guardarAnimal(Animales animal, int fincaId){
+         Fincas finca= fincaRepository.findById(fincaId)
+                 .orElseThrow(()->new RuntimeException("finca no encontrada"));
+         animal.setFinca(finca);
+        return animalesRepository.save(animal);
     }
 
     public Boolean eliminarAnimalPorId(long id){
@@ -33,23 +38,19 @@ public class AnimalesService {
         }else{return false;}
     }
 
-    public Optional<Animales> actualizarAnimales(long id, Animales animalActualizado){
+    /*public Optional<Animales> actualizarAnimales(long id, Animales animalActualizado){
 
         return animalesRepository.findById(id)
                 .map(fincaExistente->{
+                    fincaExistente.
 
                 });
-
         }
 
-
-    
-    
-    }
+    }*/
 
 
 
 
 }
 
-*/
