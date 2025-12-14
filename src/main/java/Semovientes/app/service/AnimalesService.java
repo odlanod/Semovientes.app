@@ -38,16 +38,46 @@ public class AnimalesService {
         }else{return false;}
     }
 
-    /*public Optional<Animales> actualizarAnimales(long id, Animales animalActualizado){
+   public Optional<Animales> actualizarAnimales(
+        long id,
+        Animales animalActualizado,
+        Integer fincaId,
+        Long madreId,
+        Long padreId
+) {
 
-        return animalesRepository.findById(id)
-                .map(fincaExistente->{
-                    fincaExistente.
+    return animalesRepository.findById(id).map(animal -> {
 
-                });
+        animal.setNombre(animalActualizado.getNombre());
+        animal.setEspecie(animalActualizado.getEspecie());
+        animal.setRaza(animalActualizado.getRaza());
+        animal.setSexo(animalActualizado.getSexo());
+        animal.setAdquisicion(animalActualizado.getAdquisicion());
+        animal.setFecha(animalActualizado.getFecha());
+        animal.setPesoInicial(animalActualizado.getPesoInicial());
+        animal.setEstadoAnimal(animalActualizado.getEstadoAnimal());
+
+        if (fincaId != null) {
+            Fincas finca = fincasRepository.findById(fincaId)
+                    .orElseThrow(() -> new RuntimeException("Finca no existe"));
+            animal.setFinca(finca);
         }
 
-    }*/
+        if (madreId != null) {
+            Animales madre = animalesRepository.findById(madreId)
+                    .orElseThrow(() -> new RuntimeException("Madre no existe"));
+            animal.setMadre(madre);
+        }
+
+        if (padreId != null) {
+            Animales padre = animalesRepository.findById(padreId)
+                    .orElseThrow(() -> new RuntimeException("Padre no existe"));
+            animal.setPadre(padre);
+        }
+
+        return animalesRepository.save(animal);
+    });
+}
 
 
 
