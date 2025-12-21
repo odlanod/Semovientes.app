@@ -4,8 +4,8 @@ import jakarta.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-@Table(name="Registro_Vacunas")
-public class Registro_Vacunas {
+@Table(name="RegistroVacunas")
+public class RegistroVacunas {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -15,15 +15,15 @@ public class Registro_Vacunas {
     private Animales animal;
 
     @ManyToOne(fetch= FetchType.LAZY)
-    @JoinColumn(name="vacuna_id")
+    @JoinColumn(name="vacunaId")
     private Vacunas vacuna;
 
     @ManyToOne(fetch= FetchType.LAZY)
-    @JoinColumn(name="usuario_id")
+    @JoinColumn(name="usuarioId")
     private Usuario aplicador;
 
-    @Column(name="Lote_Vacuna", nullable=true, length=40)
-    private String lote_Vacuna;
+    @Column(name="loteVacuna", nullable=true, length=40)
+    private String loteVacuna;
 
     @Column(name="Dosis", nullable=false)
     private bigDecimal dosis;
@@ -31,20 +31,20 @@ public class Registro_Vacunas {
     @Column(name="tipoDeDosis", nullable false, length=20)
     private String tipoDosis; 
 
-    @Column(name="Fecha_Aplicacion", nullable=false)
-    private LocalDate fecha_Vacuna;
+    @Column(name="fechaAplicacion", nullable=false)
+    private LocalDate fechaVacuna;
 
-    @Column(name="Via_Administracion", nullable=false, length=30)
-    private String via_administracion;
+    @Column(name="viaAdministracion", nullable=false, length=30)
+    private String viaAdministracion;
 
-    public Registro_Vacunas() {}
+    public RegistroVacunas() {}
 
-    public Registro_Vacunas(String lote_Vacuna, int dosis, String tipoDosis, LocalDate fecha_Vacuna, String via_administracion) {
-        this.lote_Vacuna = lote_Vacuna;
+    public RegistroVacunas(String loteVacuna, int dosis, String tipoDosis, LocalDate fechaVacuna, String viaAdministracion) {
+        this.loteVacuna = loteVacuna;
         this.dosis = dosis;
         this.tipoDosis = tipoDosis;
-        this.fecha_Vacuna = fecha_Vacuna;
-        this.via_administracion = via_administracion;
+        this.fechaVacuna = fechaVacuna;
+        this.viaAdministracion = viaAdministracion;
     }
 
     // Getters y Setters
@@ -60,8 +60,8 @@ public class Registro_Vacunas {
     public Usuario getAplicador() { return aplicador; }
     public void setAplicador(Usuario aplicador) { this.aplicador = aplicador; }
 
-    public String getLote_Vacuna() { return lote_Vacuna; }
-    public void setLote_Vacuna(String lote_Vacuna) { this.lote_Vacuna = lote_Vacuna; }
+    public String getLoteVacuna() { return loteVacuna; }
+    public void setLoteVacuna(String loteVacuna) { this.loteVacuna = loteVacuna; }
 
     public int getDosis() { return dosis; }
     public void setDosis(int dosis) { this.dosis = dosis; }
@@ -69,9 +69,9 @@ public class Registro_Vacunas {
     public String getTipoDosis() { return tipoDosis; }
     public void setTipoDosis(String tipoDosis) { this.tipoDosis= tipoDosis; }
 
-    public LocalDate getFecha_Vacuna() { return fecha_Vacuna; }
-    public void setFecha_Vacuna(LocalDate fecha_Vacuna) { this.fecha_Vacuna = fecha_Vacuna; }
+    public LocalDate getFechaVacuna() { return fechaVacuna; }
+    public void setFechaVacuna(LocalDate fechaVacuna) { this.fechaVacuna = fechaVacuna; }
 
-    public String getVia_administracion() { return via_administracion; }
-    public void setVia_administracion(String via_administracion) { this.via_administracion = via_administracion; }
+    public String getViaAdministracion() { return viaAdministracion; }
+    public void setViaAdministracion(String viaAdministracion) { this.viaAdministracion = viaAdministracion; }
 }
