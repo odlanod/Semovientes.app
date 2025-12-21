@@ -38,13 +38,7 @@ public class AnimalesService {
         }else{return false;}
     }
 
-   public Optional<Animales> actualizarAnimales(
-        long id,
-        Animales animalActualizado,
-        Integer fincaId,
-        Long madreId,
-        Long padreId
-) {
+   public Optional<Animales> actualizarAnimales(long id,Animales animalActualizado, Integer fincaId, Long madreId, Long padreId) {
 
     return animalesRepository.findById(id).map(animal -> {
 
@@ -58,7 +52,7 @@ public class AnimalesService {
         animal.setEstadoAnimal(animalActualizado.getEstadoAnimal());
 
         if (fincaId != null) {
-            Fincas finca = fincasRepository.findById(fincaId)
+            Fincas finca = fincaRepository.findById(fincaId)
                     .orElseThrow(() -> new RuntimeException("Finca no existe"));
             animal.setFinca(finca);
         }
