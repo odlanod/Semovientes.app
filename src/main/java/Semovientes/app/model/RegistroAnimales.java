@@ -31,7 +31,7 @@ private String movimiento;
 private double cantidad;
 
 @Column(name="UnidadMedida", nullable=false, length=20)
-private String UM;
+private String unidadMedida;
 
 @Column(name = "ValorPorKilogramo", precision = 10, scale = 2, nullable = false)
 private java.math.BigDecimal valorKilogramo; // Usa BigDecimal para precisión monetaria
@@ -45,11 +45,11 @@ private String detalles;
 
     public Registro_Animales(){}
 
-    public Registro_Animales(LocalDate fechaDeRegistro, String movimiento, double cantidad, String UM, BigDecimal valorKilogramo, BigDecimal valorTotal, String detalles) {
+    public Registro_Animales(LocalDate fechaDeRegistro, String movimiento, double cantidad, String unidadMedida, BigDecimal valorKilogramo, BigDecimal valorTotal, String detalles) {
         this.fechaDeRegistro = fechaDeRegistro;
         this.movimiento = movimiento;
         this.cantidad = cantidad;
-        this.UM = UM;
+        this.unidadMedida= unidadMedida;
         this.valorKilogramo = valorKilogramo;
         this.valorTotal = valorTotal;
         this.detalles = detalles;
@@ -74,8 +74,8 @@ private String detalles;
     public double getCantidad() {return cantidad;}
     public void setCantidad(double cantidad) {this.cantidad = cantidad;}
 
-    public String getUM() {return UM;}
-    public void setUM(String UM) {this.UM = UM;}
+    public String getUnidadMedida() {return unidadMedida;}
+    public void setUnidadMedida(String unidadMedida) {this.unidadMedida= unidadMedida;}
 
     public BigDecimal getValorKilogramo() {return valorKilogramo;}
     public void setValorKilogramo(BigDecimal valorKilogramo) {this.valorKilogramo = valorKilogramo;}
