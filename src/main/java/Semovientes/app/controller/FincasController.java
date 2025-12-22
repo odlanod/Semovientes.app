@@ -6,17 +6,18 @@ import Semovientes.app.service.FincasService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
-import java.lang.Boolean;
 
 @RestController
-@RequestMapping("/finca_")
+@RequestMapping("/finca")
 public class FincasController {
+    
+    private final FincasService fincasService;
 
-    @Autowired
-    private FincasService fincasService;
+    public FincasController(FincasService fincasService){
+        this.fincasService = fincasService;
+    }
 
     @GetMapping
     public ResponseEntity <List<Fincas>> getALLFincas(){
@@ -31,7 +32,7 @@ public class FincasController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Fincas> getUserByID(@PathVariable Integer id) {
+    public ResponseEntity<Fincas> getFincaByID(@PathVariable Integer id) {
         return fincasService.obtenerFincaPorId(id)
                 .map(finca -> ResponseEntity.ok(finca))
                 .orElseGet(() -> ResponseEntity.notFound().build());
