@@ -43,9 +43,9 @@ private java.math.BigDecimal valorTotal; // Usa BigDecimal para precisión monet
 private String detalles;
 /*------------------------------------------------------------------------------*/
 
-    public Registro_Animales(){}
+    public RegistroAnimales(){}
 
-    public Registro_Animales(LocalDate fechaDeRegistro, String movimiento, double cantidad, String unidadMedida, BigDecimal valorKilogramo, BigDecimal valorTotal, String detalles) {
+    public RegistroAnimales(LocalDate fechaDeRegistro, String movimiento, double cantidad, String unidadMedida, BigDecimal valorKilogramo, BigDecimal valorTotal, String detalles) {
         this.fechaDeRegistro = fechaDeRegistro;
         this.movimiento = movimiento;
         this.cantidad = cantidad;

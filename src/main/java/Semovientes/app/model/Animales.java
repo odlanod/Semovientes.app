@@ -48,10 +48,10 @@ public class Animales {
     private Animales padre;
 
     @OneToMany(mappedBy="animal")
-    private List<Registro_Vacunas> registroVacunas = new ArrayList<>();
+    private List<RegistroVacunas> registroVacunas = new ArrayList<>();
 
     @OneToMany(mappedBy="animal")
-    public List<Registro_Animales> registroAnimales= new ArrayList<>();
+    public List<RegistroAnimales> registroAnimales= new ArrayList<>();
 
     public Animales() {}
 
@@ -104,7 +104,7 @@ public class Animales {
     public Animales getPadre() { return padre; }
     public void setPadre(Animales padre) { this.padre = padre; }
 
-    public List<Registro_Vacunas> getRegistroVacunas() { return registroVacunas; }
+    public List<RegistroVacunas> getRegistroVacunas() { return registroVacunas; }
 
-    public List<Registro_Animales> getRegistroAnimales(){return registroAnimales;}
+    public List<RegistroAnimales> getRegistroAnimales(){return registroAnimales;}
 }

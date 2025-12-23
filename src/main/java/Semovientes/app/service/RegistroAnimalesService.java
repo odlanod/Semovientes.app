@@ -1,10 +1,10 @@
-package semovientes.app.service;
-import semovientes.app.model.RegistroAnimales;
-import semovientes.app.model.Usuario;
-import semovientes.app.model.Animales;
-import semovientes.app.repository.RegistroAnimalesRepository;
-import semovientes.app.repository.UsuarioRepository;
-import semovientes.app.repository.AnimalesRepository;
+package Semovientes.app.service;
+import Semovientes.app.model.RegistroAnimales;
+import Semovientes.app.model.Usuario;
+import Semovientes.app.model.Animales;
+import Semovientes.app.repository.RegistroAnimalesRepository;
+import Semovientes.app.repository.UsuarioRepository;
+import Semovientes.app.repository.AnimalesRepository;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
@@ -48,6 +48,32 @@ Animales animal= animalesRepository.findById(animalId)
 guardarRegistro.setUsuario(usuario); 
 guardarRegistro.setAnimal(animal);
 return registroAnimalesRepository.save(guardarRegistro);
+}
+
+public Optional<RegistroAnimales> actualizarRegistroDeAnimal(Long id, RegistroAnimales nuevoRegistro,Long usuarioId, Long animalId){
+    return registroAnimalesRepository.findById(id)
+            .map(actualizarRegistro->{
+                actualizarRegistro.setFechaDeRegistro(nuevoRegistro.getFechaDeRegistro());
+                actualizarRegistro.setMovimiento(nuevoRegistro.getMovimiento());
+                actualizarRegistro.setCantidad(nuevoRegistro.getCantidad());
+                actualizarRegistro.setUnidadMedida(nuevoRegistro.getUnidadMedida());
+                actualizarRegistro.setValorKilogramo(nuevoRegistro.getValorKilogramo());
+                actualizarRegistro.setValorTotal(nuevoRegistro.getValorTotal());
+                actualizarRegistro.setDetalles(nuevoRegistro.getDetalles());
+
+                if(usuarioId != null){
+                    Usuario usuario = usuarioRepository.findById(usuarioId)
+                            .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+                    nuevoRegistro.setUsuario(usuario);
+                }
+
+                if(animalId != null){
+                    Animales animal = animalesRepository.findById(animalId)
+                            .orElseThrow(() -> new RuntimeException("Animal no encontrado"));
+                    nuevoRegistro.setAnimal(animal);
+                }
+                return registroAnimalesRepository.save(nuevoRegistro);
+            });
 }
 
 }
