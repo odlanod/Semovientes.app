@@ -9,13 +9,13 @@ import java.util.List;
 public class Vacunas {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     @Column(name="nombre", nullable=false, length=40)
     private String nombre;
 
     @OneToMany(mappedBy="vacuna")
-    private List<Registro_Vacunas> registroVacuna = new ArrayList<>();
+    private List<RegistroVacunas> registroVacuna = new ArrayList<>();
 
     public Vacunas() {}
     public Vacunas(String nombre) { this.nombre = nombre; }
@@ -27,5 +27,5 @@ public class Vacunas {
     public String getNombre() { return nombre; }
     public void setNombre(String nombre) { this.nombre = nombre; }
 
-    public List<Registro_Vacunas> getRegistroVacunas() { return registroVacuna; }
+    public List<RegistroVacunas> getRegistroVacunas() { return registroVacuna; }
 }

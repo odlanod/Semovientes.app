@@ -64,15 +64,15 @@ public Optional<RegistroAnimales> actualizarRegistroDeAnimal(Long id, RegistroAn
                 if(usuarioId != null){
                     Usuario usuario = usuarioRepository.findById(usuarioId)
                             .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
-                    nuevoRegistro.setUsuario(usuario);
+                    actualizarRegistro.setUsuario(usuario);
                 }
 
                 if(animalId != null){
                     Animales animal = animalesRepository.findById(animalId)
                             .orElseThrow(() -> new RuntimeException("Animal no encontrado"));
-                    nuevoRegistro.setAnimal(animal);
+                    actualizarRegistro.setAnimal(animal);
                 }
-                return registroAnimalesRepository.save(nuevoRegistro);
+                return registroAnimalesRepository.save(actualizarRegistro);
             });
 }
 

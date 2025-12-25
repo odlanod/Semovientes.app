@@ -1,5 +1,5 @@
 package Semovientes.app.service;
-import semovientes.app.model.Vacunas;
+import Semovientes.app.model.Vacunas;
 import Semovientes.app.repository.VacunasRepository;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -28,8 +28,11 @@ private final VacunasRepository vacunaRepository;
   public Vacunas guardarVacuna(Vacunas vacuna){
     return vacunaRepository.save(vacuna);}
 
-  public Optional<Vacunas> actualizarVacuna(int id, Vacunas vacunas){
+  public Optional<Vacunas> actualizarVacuna(Integer id, Vacunas vacunas){
     return vacunaRepository.findById(id)
-      .map();
+      .map(actualizar->{
+          actualizar.setNombre(vacunas.getNombre());
+          return vacunaRepository.save(actualizar);
+      });
   }
 }

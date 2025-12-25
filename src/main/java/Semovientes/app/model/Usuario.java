@@ -13,7 +13,7 @@ public class Usuario {
     private Long id;
 
     @OneToMany(mappedBy="aplicador")
-    private List<Registro_Vacunas> registroVacuna = new ArrayList<>();
+    private List<RegistroVacunas> registroVacuna = new ArrayList<>();
 
     @OneToMany(mappedBy="usuario")
     private List<Fincas> fincas = new ArrayList<>();
@@ -49,7 +49,7 @@ public class Usuario {
     private String genero;
 
     @OneToMany(mappedBy="usuario")
-    private List<Registro_Animales> registros= new ArrayList<>();
+    private List<RegistroAnimales> registros= new ArrayList<>();
 
     public Usuario() {}
 
@@ -70,7 +70,7 @@ public class Usuario {
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
-    public List<Registro_Vacunas> getRegistroVacunas() { return registroVacuna; }
+    public List<RegistroVacunas> getRegistroVacunas() { return registroVacuna; }
     public List<Fincas> getFincas() { return fincas; }
 
     public String getNombre() { return nombre; }
@@ -103,5 +103,5 @@ public class Usuario {
     public String getGenero() { return genero; }
     public void setGenero(String genero) { this.genero = genero; }
 
-    public List<Registro_Animales> getRegistroAnimales(){return registros; }
+    public List<RegistroAnimales> getRegistroAnimales(){return registros; }
 }

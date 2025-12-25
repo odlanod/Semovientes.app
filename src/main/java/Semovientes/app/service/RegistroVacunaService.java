@@ -50,5 +50,35 @@ public class RegistroVacunaService{
     return registroVacunasRepository.save(registroVacuna);
   }
 
+  public Optional<RegistroVacunas> actualizarRegistro(Long id, RegistroVacunas nuevoRegistro, Long animalId, Integer vacunaId, Long aplicadorId){
+    return registroVacunasRepository.findById(id)
+            .map(registro ->{
+              registro.setLoteVacuna(nuevoRegistro.getLoteVacuna());
+              registro.setDosis(nuevoRegistro.getDosis());
+              registro.setTipoDosis(nuevoRegistro.getTipoDosis());
+              registro.setFechaVacuna(nuevoRegistro.getFechaVacuna());
+              registro.setViaAdministracion(nuevoRegistro.getViaAdministracion());
+
+              if(animalId != null){
+                Animales animal = animalesRepository.findById(animalId)
+                        .orElseThrow(() -> new RuntimeException("Animal no encontrado"));
+                 registro.setAnimal(animal);
+              }
+
+              if(vacunaId != null){
+                Vacunas vacuna = vacunasRepository.findById(vacunaId)
+                        .orElseThrow(() -> new RuntimeException("Vacuna no Encontrada"));
+                 registro.setVacuna(vacuna);
+              }
+
+              if(aplicadorId != null){
+                Usuario usuario = usuarioRepository.findById(aplicadorId)
+                        .orElseThrow(() -> new RuntimeException("Aplicador no encontrado"));
+                 registro.setAplicador(usuario);
+              }
+              return registroVacunasRepository.save(registro);
+            });
+  }
+
 
 }

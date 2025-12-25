@@ -26,9 +26,9 @@ public class RegistroVacunas {
     private String loteVacuna;
 
     @Column(name="Dosis", nullable=false)
-    private bigDecimal dosis;
+    private double dosis;
 
-    @Column(name="tipoDeDosis", nullable false, length=20)
+    @Column(name="tipoDeDosis", nullable= false, length=20)
     private String tipoDosis; 
 
     @Column(name="fechaAplicacion", nullable=false)
@@ -39,7 +39,7 @@ public class RegistroVacunas {
 
     public RegistroVacunas() {}
 
-    public RegistroVacunas(String loteVacuna, int dosis, String tipoDosis, LocalDate fechaVacuna, String viaAdministracion) {
+    public RegistroVacunas(String loteVacuna, double dosis, String tipoDosis, LocalDate fechaVacuna, String viaAdministracion) {
         this.loteVacuna = loteVacuna;
         this.dosis = dosis;
         this.tipoDosis = tipoDosis;
@@ -63,8 +63,8 @@ public class RegistroVacunas {
     public String getLoteVacuna() { return loteVacuna; }
     public void setLoteVacuna(String loteVacuna) { this.loteVacuna = loteVacuna; }
 
-    public int getDosis() { return dosis; }
-    public void setDosis(int dosis) { this.dosis = dosis; }
+    public double getDosis() { return dosis; }
+    public void setDosis(double dosis) { this.dosis = dosis; }
 
     public String getTipoDosis() { return tipoDosis; }
     public void setTipoDosis(String tipoDosis) { this.tipoDosis= tipoDosis; }
