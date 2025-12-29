@@ -38,7 +38,7 @@ public class UsuarioService {
                     usuarioExistente.setApellidos(usuarioActualizado.getApellidos());
                     usuarioExistente.setCedula(usuarioActualizado.getCedula());
                     usuarioExistente.setCorreoElectronico(usuarioActualizado.getCorreoElectronico());
-                    usuarioExistente.setFecha_Nacimiento_usuario(usuarioActualizado.getFecha_Nacimiento_usuario());
+                    usuarioExistente.setFechaNacimiento(usuarioActualizado.getFechaNacimiento());
                     usuarioExistente.setPassword(usuarioActualizado.getPassword());
                     usuarioExistente.setRol(usuarioActualizado.getRol());
                     usuarioExistente.setSueldo(usuarioActualizado.getSueldo());

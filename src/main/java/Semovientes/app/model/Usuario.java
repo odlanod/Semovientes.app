@@ -18,10 +18,10 @@ public class Usuario {
     @OneToMany(mappedBy="usuario")
     private List<Fincas> fincas = new ArrayList<>();
 
-    @Column(name="nombre_Usuario", nullable=false, length=30)
+    @Column(name="nombres", nullable=false, length=30)
     private String nombre;
 
-    @Column(name="apellido_Usuario", nullable=false, length=30)
+    @Column(name="apellidos", nullable=false, length=30)
     private String apellidos;
 
     @Column(name="cedula_usuario", nullable=false, unique=true)
@@ -30,13 +30,13 @@ public class Usuario {
     @Column(name="correoElectronico", nullable=false, unique=true)
     private String correoElectronico;
 
-    @Column(name="fecha_nacimiento", nullable=false)
-    private LocalDate fecha_Nacimiento_usuario;
+    @Column(name="fechaNacimiento", nullable=false)
+    private LocalDate fechaNacimiento;
 
     @Column(name="password_hash", nullable=false, length=255)
     private String password;
 
-    @Column(name="rol_usuario", nullable=false, length=30)
+    @Column(name="rolUsuario", nullable=false, length=30)
     private String rol;
 
     @Column(name="sueldo_usuario", nullable=false)
@@ -45,7 +45,7 @@ public class Usuario {
     @Column(name="estado", nullable=false)
     private Boolean estado;
 
-    @Column(name="genero_usuario", nullable=false, length=50)
+    @Column(name="generoUsuario", nullable=false, length=50)
     private String genero;
 
     @OneToMany(mappedBy="usuario")
@@ -53,12 +53,12 @@ public class Usuario {
 
     public Usuario() {}
 
-    public Usuario(String nombre, String apellidos, String cedula, String correoElectronico, LocalDate fecha_Nacimiento_usuario, String password, String rol, double sueldo, Boolean estado, String genero) {
+    public Usuario(String nombre, String apellidos, String cedula, String correoElectronico, LocalDate fechaNacimiento, String password, String rol, double sueldo, Boolean estado, String genero) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.cedula = cedula;
         this.correoElectronico = correoElectronico;
-        this.fecha_Nacimiento_usuario = fecha_Nacimiento_usuario;
+        this.fechaNacimiento = fechaNacimiento;
         this.password = password;
         this.rol = rol;
         this.sueldo = sueldo;
@@ -85,8 +85,8 @@ public class Usuario {
     public String getCorreoElectronico() { return correoElectronico; }
     public void setCorreoElectronico(String correoElectronico) { this.correoElectronico = correoElectronico; }
 
-    public LocalDate getFecha_Nacimiento_usuario() { return fecha_Nacimiento_usuario; }
-    public void setFecha_Nacimiento_usuario(LocalDate fecha_Nacimiento_usuario) { this.fecha_Nacimiento_usuario = fecha_Nacimiento_usuario; }
+    public LocalDate getFechaNacimiento() { return fechaNacimiento; }
+    public void setFechaNacimiento(LocalDate fechaNacimiento) { this.fechaNacimiento = fechaNacimiento; }
 
     public String getPassword() { return password; }
     public void setPassword(String password) { this.password = password; }

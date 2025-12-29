@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "Semovientes_Http",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

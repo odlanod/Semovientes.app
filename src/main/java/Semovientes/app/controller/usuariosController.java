@@ -23,11 +23,12 @@ public class usuariosController {
         return ResponseEntity.ok(usuario);
     }
 
-    @PostMapping("/guardar")
+    @PostMapping
     public ResponseEntity<Usuario> createUsuario(@RequestBody Usuario usuario){
         Usuario newUsuario = usuarioService.guardarUsuario(usuario);
         return new ResponseEntity<>(newUsuario, HttpStatus.CREATED);
     }
+
     @GetMapping("/{id}")
     public ResponseEntity<Usuario> getUsuarioById(@PathVariable long id){
         return usuarioService.obtenerUsuarioPorId(id)
