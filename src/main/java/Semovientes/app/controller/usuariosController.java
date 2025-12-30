@@ -24,9 +24,9 @@ public class usuariosController {
     }
 
     @PostMapping
-    public ResponseEntity<Usuario> createUsuario(@RequestBody Usuario usuario){
-        Usuario newUsuario = usuarioService.guardarUsuario(usuario);
-        return new ResponseEntity<>(newUsuario, HttpStatus.CREATED);
+    public ResponseEntity<Usuario> createUsuario(@RequestBody Usuario nuevoUsuario){
+        Usuario usuario = usuarioService.guardarUsuario(nuevoUsuario);
+        return new ResponseEntity<>(usuario, HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")

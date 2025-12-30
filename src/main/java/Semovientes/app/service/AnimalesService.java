@@ -24,11 +24,8 @@ public class AnimalesService {
     }
 
     //Insertar nuevo Animal ---------------------------------------------------------
-     public Animales guardarAnimal(Animales animal, int fincaId){
-         Fincas finca= fincaRepository.findById(fincaId)
-                 .orElseThrow(()->new RuntimeException("finca no encontrada"));
-         animal.setFinca(finca);
-        return animalesRepository.save(animal);
+     public Animales guardarAnimal(Animales animal){
+         return animalesRepository.save(animal);
     }
 
     public Boolean eliminarAnimalPorId(long id){
