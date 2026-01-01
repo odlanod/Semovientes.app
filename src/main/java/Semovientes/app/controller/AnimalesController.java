@@ -32,8 +32,29 @@ public AnimalesController(AnimalesService animalesService){
     return new ResponseEntity<>(animal, HttpStatus.CREATED);
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> eliminarAnimal(@PathVariable Long id){
+    boolean animalEliminado = animalesService.eliminarAnimalPorId(id);
 
+    if(animalEliminado){
+        return ResponseEntity.noContent().build();
+    }else{return ResponseEntity.notFound().build();}
+    }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Animales> obtenerAnimalPorId(@PathVariable Long id){
+    return animalesService.obtenerAnimalPorId(id)
+            .map(animal -> ResponseEntity.ok(animal))
+            .orElseGet(()-> ResponseEntity.notFound().build());
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Animales> actualizar(@RequestBody Animales animalActualizado, @PathVariable Long id, @RequestParam(required = false) Integer idFinca,
+                                               @RequestParam(required = false) Long idPadre, @RequestParam(required = false) Long idMadre){
+    return animalesService.actualizarAnimales(id,animalActualizado, idFinca, idPadre, idMadre )
+            .map(animal ->{return ResponseEntity.ok(animal);})
+            .orElseGet(() ->{return ResponseEntity.notFound().build();});
+    }
 
 
 

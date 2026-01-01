@@ -1,5 +1,6 @@
 package Semovientes.app.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -41,10 +42,12 @@ public class Animales {
 
     @ManyToOne
     @JoinColumn(name="id_madre", nullable=true)
+    @JsonIgnoreProperties({"madre", "padre", "registroVacunas", "registroAnimales"})
     private Animales madre;
 
     @ManyToOne
     @JoinColumn(name="id_padre", nullable=true)
+    @JsonIgnoreProperties({"madre", "padre", "registroVacunas", "registroAnimales"})
     private Animales padre;
 
     @OneToMany(mappedBy="animal")

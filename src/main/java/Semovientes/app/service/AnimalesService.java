@@ -1,8 +1,12 @@
 package Semovientes.app.service;
 import Semovientes.app.model.Animales;
 import Semovientes.app.model.Fincas;
+import Semovientes.app.repository.AnimalesRepository;
+import Semovientes.app.repository.FincasRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.util.List;
 
 import java.util.Optional;
@@ -10,9 +14,13 @@ import java.util.Optional;
 @Service
 public class AnimalesService {
 
-    @Autowired
-    private Semovientes.app.repository.AnimalesRepository animalesRepository;
-    private Semovientes.app.repository.fincasRepository fincaRepository;
+    private final AnimalesRepository animalesRepository;
+    private final FincasRepository fincasRepository;
+
+    public AnimalesService(AnimalesRepository animalesRepository, FincasRepository fincasRepository){
+        this.animalesRepository = animalesRepository;
+        this.fincasRepository = fincasRepository;
+    }
 
     //Traer todos los Animaless--------------------------------------------------
     public List<Animales> obtenerTodasLosAnimales(){
@@ -23,18 +31,21 @@ public class AnimalesService {
         return animalesRepository.findById(id);
     }
 
-    //Insertar nuevo Animal ---------------------------------------------------------
+
+    @Transactional
      public Animales guardarAnimal(Animales animal){
          return animalesRepository.save(animal);
     }
 
+    @Transactional
     public Boolean eliminarAnimalPorId(long id){
         if(animalesRepository.existsById(id)){
             animalesRepository.deleteById(id);
-            return ! animalesRepository.existsById(id);
+            return true;
         }else{return false;}
     }
 
+    @Transactional
    public Optional<Animales> actualizarAnimales(long id,Animales animalActualizado, Integer fincaId, Long madreId, Long padreId) {
 
     return animalesRepository.findById(id).map(animal -> {
@@ -49,7 +60,7 @@ public class AnimalesService {
         animal.setEstadoAnimal(animalActualizado.getEstadoAnimal());
 
         if (fincaId != null) {
-            Fincas finca = fincaRepository.findById(fincaId)
+            Fincas finca = fincasRepository.findById(fincaId)
                     .orElseThrow(() -> new RuntimeException("Finca no existe"));
             animal.setFinca(finca);
         }
