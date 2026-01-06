@@ -46,6 +46,11 @@ public class VacunasController {
   }
 
 
-  @PutMapping()
+  @PutMapping("/{id}")
+  public ResponseEntity<Vacunas> actualizarVacuna(@PathVariable Integer id, @RequestBody Vacunas newVacuna){
+    return vacunaService.actualizarVacuna(id, newVacuna)
+                        .map(vacuna->{return ResponseEntity.ok(vacuna);})
+                        .orElseGet(()->{return ResponseEntity.notFound().build();});
+  }
   
 }
