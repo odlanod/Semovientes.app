@@ -19,10 +19,33 @@ public class VacunasController {
   }
 
   @GetMapping
-  public ResponseEntity<List<Vacunas>> obtenerTodosLasVacunas(){
+  public ResponseEntity<List<Vacunas>> obtenerTodasLasVacunas(){
     List<Vacunas> vacunas = vacunaService.obtenerTodasLasVacunas();
       return ResponseEntity.ok(vacunas);
   }
 
-  public ResponseEntity<Vacunas> obtenerVacunaPorId(@PathVariable ){}
+  @GetMapping("/{id}")
+  public ResponseEntity<Vacunas> obtenerVacunaPorId(@PathVariable Integer id ){
+    return vacunaService.obtenerVacunasPorId(id).
+                        map(vacuna -> ResponseEntity.ok(vacuna))
+                        .oeElseGet(() -> ResponseEntity.notFount().build());
+  }
+
+  @PostMapping
+  public ResponseEntity<Vacunas> guardarVacuna(@RequestBody Vacunas newVacuna){
+    Vacunas vacuna = vacunaService.guardarVacuna(newVacuna);
+    return new ResponseEntity<>(vacuna, HttpStatus.CREATED);
+  }
+
+  @DeleteMapping("/{id}")
+  public ResponseEntity<Void> eliminarVacuna(@PathVariable Integer id){
+    boolean vacunaEliminada = vacunaService.eliminarVacuna();
+    if(vacunaEliminada){
+      return ResponseEntity.noContent().build();
+    }else{return ResponseEntity.notFound().build();}
+  }
+
+
+  @PutMapping()
+  
 }
