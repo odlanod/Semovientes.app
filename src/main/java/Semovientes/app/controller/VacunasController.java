@@ -28,7 +28,7 @@ public class VacunasController {
   public ResponseEntity<Vacunas> obtenerVacunaPorId(@PathVariable Integer id ){
     return vacunaService.obtenerVacunasPorId(id).
                         map(vacuna -> ResponseEntity.ok(vacuna))
-                        .oeElseGet(() -> ResponseEntity.notFount().build());
+                        .orElseGet(() -> ResponseEntity.notFound().build());
   }
 
   @PostMapping
@@ -39,7 +39,7 @@ public class VacunasController {
 
   @DeleteMapping("/{id}")
   public ResponseEntity<Void> eliminarVacuna(@PathVariable Integer id){
-    boolean vacunaEliminada = vacunaService.eliminarVacuna();
+    boolean vacunaEliminada = vacunaService.eliminarVacuna(id);
     if(vacunaEliminada){
       return ResponseEntity.noContent().build();
     }else{return ResponseEntity.notFound().build();}
