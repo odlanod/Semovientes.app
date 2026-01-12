@@ -20,8 +20,8 @@ public class RegistroVacunasController{
 
     @GetMapping
     public ResponseEntity<List<RegistroVacunas>> obtenerTodosLosRegistros(){
-        List<RegistroVacunas> registros = registroVacunaService.obtenerTodosLosRegistrosDeVacunas();
-        return ResponseEntity.ok(registros);
+        List<RegistroVacunas> registroVacunas = registroVacunaService.obtenerTodosLosRegistrosDeVacunas();
+        return ResponseEntity.ok(registroVacunas);
     }
 
     @GetMapping("/{id}")

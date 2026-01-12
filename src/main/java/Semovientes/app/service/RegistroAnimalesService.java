@@ -23,7 +23,7 @@ this.animalesRepository= animalesRepository;
 }
 
 
-public List<RegistroAnimales> obtenerTodosLosAnimales(){
+public List<RegistroAnimales> obtenerTodosLosRegistrosDeAnimales(){
 return registroAnimalesRepository.findAll();
 }
 
