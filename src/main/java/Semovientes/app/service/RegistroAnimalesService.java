@@ -27,16 +27,19 @@ public List<RegistroAnimales> obtenerTodosLosRegistrosDeAnimales(){
 return registroAnimalesRepository.findAll();
 }
 
+
 public Optional<RegistroAnimales> obtenerRegistroPorId(Long id){
 return registroAnimalesRepository.findById(id);
 }
 
-public boolean eliminarRegistro(Long id){
+
+public boolean eliminarRegistroAnimales(Long id){
 if(registroAnimalesRepository.existsById(id)){
 registroAnimalesRepository.deleteById(id);
 return true;
 }else{return false;}
 }
+
 
 public RegistroAnimales guardarRegistroDeAnimal(RegistroAnimales guardarRegistro,Long usuarioId, Long animalId){
 Usuario usuario= usuarioRepository.findById(usuarioId)
@@ -49,6 +52,7 @@ guardarRegistro.setUsuario(usuario);
 guardarRegistro.setAnimal(animal);
 return registroAnimalesRepository.save(guardarRegistro);
 }
+
 
 public Optional<RegistroAnimales> actualizarRegistroDeAnimal(Long id, RegistroAnimales nuevoRegistro,Long usuarioId, Long animalId){
     return registroAnimalesRepository.findById(id)

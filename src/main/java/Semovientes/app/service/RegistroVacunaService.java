@@ -80,5 +80,12 @@ public class RegistroVacunaService{
             });
   }
 
+  public boolean eliminarRegistroVacuna(Long id){
+    if(registroVacunasService.existsById(id)){
+      registroVacunasRepository.deleteById(id);
+      return true;
+    }else{return false;}
+  }
+
 
 }

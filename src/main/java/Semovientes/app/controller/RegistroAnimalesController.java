@@ -34,6 +34,28 @@ public class RegistroAnimalesController{
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> eliminarRegistro(@PathVariable Long id){
-        
+        boolean registroEliminado = registroAnimalesService.eliminarRegistroAnimales(id);
+        if(registroEliminado){
+            return ResponseEntity.noContent().build();
+        }else{return ResponseEntity.notFound().build();
+        }
+    }
+
+    @PostMapping
+    public ResponseEntity<RegistroAnimales> guardarRegistroAnimal(@RequestBody RegistroAnimales registroAnimales, 
+    @RequestParam Long usuarioId, @RequestParam Long animalId){
+
+        try{
+            RegistroAnimales nuevoRegistroAnimal = registroAnimalesService.guardarRegistroDeAnimal(registroAnimales,usuarioId,animalId);
+            return new ResponseEntity<>(nuevoRegistroAnimal,HttpStatus.CREATRD);
+        }catch(RunTimeException e){
+            return ResponseEntity.badRequest().build();
+        }
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<RegistroAnimales> actualizarRegistroAnimal(@PathVariable Long id, @RequestBody RegistroAnimales registroAnimales,
+    @RequestParam(required = false) Long usuarioId, @RequestParam(required=false) Long animalId){
+        try{}catch(){}
     }
 }

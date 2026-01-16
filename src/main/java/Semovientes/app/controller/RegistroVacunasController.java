@@ -34,7 +34,7 @@ public class RegistroVacunasController{
     // Guardar nuevo registro
     // Se reciben los IDs como parámetros de consulta (Query Params) o podrías ajustarlo según tu preferencia
     @PostMapping
-    public ResponseEntity<RegistroVacunas> crearRegistro(
+    public ResponseEntity<RegistroVacunas> guardarRegistro(
             @RequestBody RegistroVacunas registroVacuna,
             @RequestParam Long animalId,
             @RequestParam Integer vacunaId,
@@ -64,5 +64,11 @@ public class RegistroVacunasController{
         }
     }
 
-
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> eliminarRegistroVacuna(@PathVariable Long id){
+        boolean registroVacunaEliminado = registroVacunaService.eliminarRegistroVacuna(id);
+        if(registroVacunaEliminado){
+            return ResponseEntity.noContent().build();
+        }else{ResponseEntity.notFound().build();}
+    }
 }
