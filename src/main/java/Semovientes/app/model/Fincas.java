@@ -1,16 +1,18 @@
 package Semovientes.app.model;
 
 import jakarta.persistence.*;
+import java.util.List;
+import java.util.ArrayList;
 
 @Entity
 @Table(name="fincas")
-public class Fincas {
+public class Finca {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="propietario_id")
+    @JoinColumn(name="propietario_id", nullable = false)
     private Usuario usuario;
 
     @Column(name="nombre_finca", nullable=false, length=50)
@@ -25,9 +27,12 @@ public class Fincas {
     @Column(name="liberaciones", nullable=false)
     private double liberaciones;
 
-    public Fincas() {}
+    @OneToMany(mappedBy = "finca", cascade = CascadeType.ALL, orphanRemoval = true )
+    private List<Animal> animales = new ArrayList<>();
 
-    public Fincas(Usuario usuario, String nombre, String descripcion, double hectareas, double liberaciones) {
+    public Finca() {}
+
+    public Finca(Usuario usuario, String nombre, String descripcion, double hectareas, double liberaciones) {
         this.usuario = usuario;
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -36,8 +41,8 @@ public class Fincas {
     }
 
     // Getters y Setters
-    public int getId() { return id; }
-    public void setId(int id) { this.id = id; }
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
     public Usuario getUsuario() { return usuario; }
     public void setUsuario(Usuario usuario) { this.usuario = usuario; }

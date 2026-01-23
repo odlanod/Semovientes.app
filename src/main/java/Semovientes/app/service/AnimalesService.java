@@ -1,5 +1,5 @@
 package Semovientes.app.service;
-import Semovientes.app.model.Animales;
+import Semovientes.app.model.Animal;
 import Semovientes.app.model.Fincas;
 import Semovientes.app.repository.AnimalesRepository;
 import Semovientes.app.repository.FincasRepository;
@@ -23,17 +23,17 @@ public class AnimalesService {
     }
 
     //Traer todos los Animaless--------------------------------------------------
-    public List<Animales> obtenerTodasLosAnimales(){
+    public List<Animal> obtenerTodasLosAnimales(){
         return animalesRepository.findAll();
     }
 
-    public Optional<Animales> obtenerAnimalPorId(long id){
+    public Optional<Animal> obtenerAnimalPorId(long id){
         return animalesRepository.findById(id);
     }
 
 
     @Transactional
-     public Animales guardarAnimal(Animales animal){
+     public Animal guardarAnimal(Animal animal){
          return animalesRepository.save(animal);
     }
 
@@ -46,7 +46,7 @@ public class AnimalesService {
     }
 
     @Transactional
-   public Optional<Animales> actualizarAnimales(long id,Animales animalActualizado, Integer fincaId, Long madreId, Long padreId) {
+   public Optional<Animal> actualizarAnimales(long id,Animal animalActualizado, Integer fincaId, Long madreId, Long padreId) {
 
     return animalesRepository.findById(id).map(animal -> {
 

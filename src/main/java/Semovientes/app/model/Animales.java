@@ -5,24 +5,25 @@ import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.CascadeType;
 
 @Entity
-public class Animales {
+public class Animal {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_animal;
+    private Long idAnimal;
 
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="finca_id")
     private Fincas finca;
 
-    @Column(name="nombre_animal", nullable=true, length=40)
+    @Column(name="nombreAnimal", length=40)
     private String nombre;
 
-    @Column(name="especie_animal", nullable=false, length=30)
+    @Column(name="especieAnimal", nullable = false, length=30)
     private String especie;
 
-    @Column(name="raza_animal", nullable=false, length=30)
+    @Column(name="razaAnimal", nullable = false, length=30)
     private String raza;
 
     @Column(name="sexo_animal", nullable=false, length=20)
@@ -41,24 +42,24 @@ public class Animales {
     private String estadoAnimal;
 
     @ManyToOne
-    @JoinColumn(name="id_madre", nullable=true)
+    @JoinColumn(name="id_madre")
     @JsonIgnoreProperties({"madre", "padre", "registroVacunas", "registroAnimales"})
-    private Animales madre;
+    private Animal madre;
 
     @ManyToOne
     @JoinColumn(name="id_padre", nullable=true)
     @JsonIgnoreProperties({"madre", "padre", "registroVacunas", "registroAnimales"})
-    private Animales padre;
+    private Animal padre;
 
-    @OneToMany(mappedBy="animal")
+    @OneToMany(mappedBy="animal", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<RegistroVacunas> registroVacunas = new ArrayList<>();
 
     @OneToMany(mappedBy="animal")
-    public List<RegistroAnimales> registroAnimales= new ArrayList<>();
+    private List<RegistroAnimales> registroAnimales= new ArrayList<>();
 
-    public Animales() {}
+    public Animal() {}
 
-    public Animales(Fincas finca, String nombre, String especie, String raza, String sexo, String adquisicion, LocalDate fecha, double pesoInicial, String estadoAnimal) {
+    public Animal(Fincas finca, String nombre, String especie, String raza, String sexo, String adquisicion, LocalDate fecha, double pesoInicial, String estadoAnimal) {
         this.finca = finca;
         this.nombre = nombre;
         this.especie = especie;
@@ -71,8 +72,8 @@ public class Animales {
     }
 
     // Getters y Setters
-    public Long getId_animal() { return id_animal; }
-    public void setId_animal(Long id_animal) { this.id_animal = id_animal; }
+    public Long getIdAnimal() { return idAnimal; }
+    public void setIdAnimal(Long idAnimal) { this.idAnimal = idAnimal; }
 
     public Fincas getFinca() { return finca; }
     public void setFinca(Fincas finca) { this.finca = finca; }
@@ -101,11 +102,11 @@ public class Animales {
     public String getEstadoAnimal() { return estadoAnimal; }
     public void setEstadoAnimal(String estadoAnimal) { this.estadoAnimal = estadoAnimal; }
 
-    public Animales getMadre() { return madre; }
-    public void setMadre(Animales madre) { this.madre = madre; }
+    public Animal getMadre() { return madre; }
+    public void setMadre(Animal madre) { this.madre = madre; }
 
-    public Animales getPadre() { return padre; }
-    public void setPadre(Animales padre) { this.padre = padre; }
+    public Animal getPadre() { return padre; }
+    public void setPadre(Animal padre) { this.padre = padre; }
 
     public List<RegistroVacunas> getRegistroVacunas() { return registroVacunas; }
 
