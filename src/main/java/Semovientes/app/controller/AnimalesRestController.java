@@ -1,4 +1,4 @@
-package Semovientes.app.controller;
+/*package Semovientes.app.controller;
 
 import Semovientes.app.model.Animal;
 import Semovientes.app.service.AnimalesService;
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/animales")
+@RequestMapping("api/animales")
 public class AnimalesController {
 
 private final AnimalesService animalesService;
@@ -58,4 +58,4 @@ public AnimalesController(AnimalesService animalesService){
 
 
 
-}
+}*/
