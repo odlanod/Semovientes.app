@@ -1,4 +1,4 @@
-package Semovientes.app.controller;
+/*package Semovientes.app.controller;
 
 import Semovientes.app.model.RegistroVacunas;
 import Semovientes.app.service.RegistroVacunaService;
@@ -71,4 +71,4 @@ public class RegistroVacunasController{
             return ResponseEntity.noContent().build();
         }else{ResponseEntity.notFound().build();}
     }
-}
+}*/

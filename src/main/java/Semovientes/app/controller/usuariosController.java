@@ -1,4 +1,4 @@
-package Semovientes.app.controller;
+/*package Semovientes.app.controller;
 
 import Semovientes.app.model.Usuario;
 import Semovientes.app.service.UsuarioService;
@@ -58,5 +58,5 @@ public class usuariosController {
                     
         }
 
-    }
+    }*/
 

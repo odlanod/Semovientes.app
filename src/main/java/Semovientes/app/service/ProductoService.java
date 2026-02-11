@@ -1,6 +1,6 @@
 package Semovientes.app.service;
 
-import Semovientes.app.model.Productos;
+import Semovientes.app.model.Producto;
 import Semovientes.app.repository.ProductosRepository;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -13,11 +13,11 @@ public class ProductoService {
         this.productoRepository = productoRepository;
     }
 
-    public List<Productos> obtenerTodosLosProductos(){
+    public List<Producto> obtenerTodosLosProductos(){
         return productoRepository.findAll();
     }
 
-    public Optional<Productos> obtenerProductoPorId(long id){
+    public Optional<Producto> obtenerProductoPorId(long id){
         return productoRepository.findById(id);
     }
 
@@ -29,12 +29,12 @@ public class ProductoService {
     }
 
 
-    public Productos guardarProducto(Productos productos){
+    public Producto guardarProducto(Producto productos){
         return productoRepository.save(productos);
     }
 
 
-    public Optional<Productos> actualizarProducto(long id, Productos productos){
+    public Optional<Producto> actualizarProducto(long id, Producto productos){
         return productoRepository.findById(id)
                 .map(producto->{
                   producto.setNombre(productos.getNombre());

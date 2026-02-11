@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 
 @Entity
 @Table(name = "Productos")
-public class Productos {
+public class Producto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idProducto;
@@ -25,7 +25,7 @@ public class Productos {
     private boolean estado;
 
     /**************************CONSTRUCTORES*************************/
-    public Productos(String nombre, String tipoProducto, BigDecimal unidadMedida, BigDecimal valorUnitario, boolean estado) {
+    public Producto(String nombre, String tipoProducto, BigDecimal unidadMedida, BigDecimal valorUnitario, boolean estado) {
         this.nombre = nombre;
         this.tipoProducto = tipoProducto;
         this.unidadMedida = unidadMedida;
@@ -33,7 +33,7 @@ public class Productos {
         this.estado = estado;
     }
 
-    public Productos(){}
+    public Producto(){}
 
     /************************GETTER Y SETTERS***********************/
     public Long getIdProducto() {

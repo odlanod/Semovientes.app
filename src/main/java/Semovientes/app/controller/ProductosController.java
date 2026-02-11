@@ -1,4 +1,4 @@
-package Semovientes.app.controller;
+/*package Semovientes.app.controller;
 
 import Semovientes.app.model.Productos;
 import Semovientes.app.service.ProductoService;
@@ -55,4 +55,4 @@ public class ProductosController {
                 .orElseGet(()->{return ResponseEntity.notFound().build();});
     }
 
-}
+}*/

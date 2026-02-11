@@ -1,6 +1,6 @@
 package Semovientes.app.service;
 import Semovientes.app.model.Animal;
-import Semovientes.app.model.Fincas;
+import Semovientes.app.model.Finca;
 import Semovientes.app.repository.AnimalesRepository;
 import Semovientes.app.repository.FincasRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,19 +60,19 @@ public class AnimalesService {
         animal.setEstadoAnimal(animalActualizado.getEstadoAnimal());
 
         if (fincaId != null) {
-            Fincas finca = fincasRepository.findById(fincaId)
+            Finca finca = fincasRepository.findById(fincaId)
                     .orElseThrow(() -> new RuntimeException("Finca no existe"));
             animal.setFinca(finca);
         }
 
         if (madreId != null) {
-            Animales madre = animalesRepository.findById(madreId)
+            Animal madre = animalesRepository.findById(madreId)
                     .orElseThrow(() -> new RuntimeException("Madre no existe"));
             animal.setMadre(madre);
         }
 
         if (padreId != null) {
-            Animales padre = animalesRepository.findById(padreId)
+            Animal padre = animalesRepository.findById(padreId)
                     .orElseThrow(() -> new RuntimeException("Padre no existe"));
             animal.setPadre(padre);
         }

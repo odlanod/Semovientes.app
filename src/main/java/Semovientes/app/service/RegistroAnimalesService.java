@@ -1,7 +1,7 @@
 package Semovientes.app.service;
 import Semovientes.app.model.RegistroAnimales;
 import Semovientes.app.model.Usuario;
-import Semovientes.app.model.Animales;
+import Semovientes.app.model.Animal;
 import Semovientes.app.repository.RegistroAnimalesRepository;
 import Semovientes.app.repository.UsuarioRepository;
 import Semovientes.app.repository.AnimalesRepository;
@@ -45,7 +45,7 @@ public RegistroAnimales guardarRegistroDeAnimal(RegistroAnimales guardarRegistro
 Usuario usuario= usuarioRepository.findById(usuarioId)
 .orElseThrow(()-> new RuntimeException("Usuario no encontrado"));
 
-Animales animal= animalesRepository.findById(animalId)
+Animal animal= animalesRepository.findById(animalId)
 .orElseThrow(()->new RuntimeException("Animal no encontrado"));
 
 guardarRegistro.setUsuario(usuario); 
@@ -72,7 +72,7 @@ public Optional<RegistroAnimales> actualizarRegistroDeAnimal(Long id, RegistroAn
                 }
 
                 if(animalId != null){
-                    Animales animal = animalesRepository.findById(animalId)
+                    Animal animal = animalesRepository.findById(animalId)
                             .orElseThrow(() -> new RuntimeException("Animal no encontrado"));
                     actualizarRegistro.setAnimal(animal);
                 }

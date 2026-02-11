@@ -1,6 +1,5 @@
 package Semovientes.app.model;
 import jakarta.persistence.*;
-
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
@@ -22,7 +21,7 @@ private Usuario usuario;
 
 @ManyToOne(fetch= FetchType.LAZY)
 @JoinColumn(name="id_animal", nullable=false)
-private Animales animal;
+private Animal animal;
 
 @Column(name="TipoDeMovimiento", nullable=false, length=30)
 private String movimiento;
@@ -65,8 +64,8 @@ private String detalles;
     public Usuario getUsuario() {return usuario;}
     public void setUsuario(Usuario usuario) {this.usuario = usuario;}
 
-    public Animales getAnimal() {return animal;}
-    public void setAnimal(Animales animal) {this.animal = animal;}
+    public Animal getAnimal() {return animal;}
+    public void setAnimal(Animal animal) {this.animal = animal;}
 
     public String getMovimiento() {return movimiento;}
     public void setMovimiento(String movimiento) {this.movimiento = movimiento;}

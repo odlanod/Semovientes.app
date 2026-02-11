@@ -1,4 +1,4 @@
-package Semovientes.app.controller;
+/*package Semovientes.app.controller;
 
 import Semovientes.app.model.RegistroAnimales;
 import Semovientes.app.service.RegistroAnimalesService;
@@ -58,4 +58,4 @@ public class RegistroAnimalesController{
     @RequestParam(required = false) Long usuarioId, @RequestParam(required=false) Long animalId){
         try{}catch(){}
     }
-}
+}*/

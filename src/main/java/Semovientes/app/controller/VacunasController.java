@@ -1,4 +1,4 @@
-package Semovientes.app.controller;
+/*package Semovientes.app.controller;
 
 import Semovientes.app.model.Vacunas;
 import Semovientes.app.service.VacunaService;
@@ -53,4 +53,4 @@ public class VacunasController {
                         .orElseGet(()->{return ResponseEntity.notFound().build();});
   }
   
-}
+}*/

@@ -1,7 +1,7 @@
 package Semovientes.app.repository;
 
-import Semovientes.app.model.Vacunas;
+import Semovientes.app.model.Vacuna;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface VacunasRepository extends JpaRepository<Vacunas,Integer> {
+public interface VacunasRepository extends JpaRepository<Vacuna, Long> {
 }

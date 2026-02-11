@@ -1,5 +1,5 @@
 
-package Semovientes.app.controller;
+/*package Semovientes.app.controller;
 
 import Semovientes.app.model.Finca;
 import Semovientes.app.service.FincasService;
@@ -58,4 +58,4 @@ public class FincasController {
             return ResponseEntity.noContent().build();
         }else{return ResponseEntity.notFound().build();}
     }
-}
+}*/

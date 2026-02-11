@@ -1,4 +1,4 @@
-package Semovientes.app.model;
+ package Semovientes.app.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
@@ -15,7 +15,7 @@ public class Animal {
 
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="finca_id")
-    private Fincas finca;
+    private Finca finca;
 
     @Column(name="nombreAnimal", length=40)
     private String nombre;
@@ -59,7 +59,7 @@ public class Animal {
 
     public Animal() {}
 
-    public Animal(Fincas finca, String nombre, String especie, String raza, String sexo, String adquisicion, LocalDate fecha, double pesoInicial, String estadoAnimal) {
+    public Animal(Finca finca, String nombre, String especie, String raza, String sexo, String adquisicion, LocalDate fecha, double pesoInicial, String estadoAnimal) {
         this.finca = finca;
         this.nombre = nombre;
         this.especie = especie;
@@ -75,8 +75,8 @@ public class Animal {
     public Long getIdAnimal() { return idAnimal; }
     public void setIdAnimal(Long idAnimal) { this.idAnimal = idAnimal; }
 
-    public Fincas getFinca() { return finca; }
-    public void setFinca(Fincas finca) { this.finca = finca; }
+    public Finca getFinca() { return finca; }
+    public void setFinca(Finca finca) { this.finca = finca; }
 
     public String getNombre() { return nombre; }
     public void setNombre(String nombre) { this.nombre = nombre; }

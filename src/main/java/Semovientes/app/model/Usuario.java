@@ -16,7 +16,7 @@ public class Usuario {
     private List<RegistroVacunas> registroVacuna = new ArrayList<>();
 
     @OneToMany(mappedBy="usuario")
-    private List<Fincas> fincas = new ArrayList<>();
+    private List<Finca> fincas = new ArrayList<>();
 
     @Column(name="nombres", nullable=false, length=30)
     private String nombre;
@@ -71,7 +71,7 @@ public class Usuario {
     public void setId(Long id) { this.id = id; }
 
     public List<RegistroVacunas> getRegistroVacunas() { return registroVacuna; }
-    public List<Fincas> getFincas() { return fincas; }
+    public List<Finca> getFincas() { return fincas; }
 
     public String getNombre() { return nombre; }
     public void setNombre(String nombre) { this.nombre = nombre; }

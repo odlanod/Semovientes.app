@@ -1,7 +1,7 @@
 package Semovientes.app.service;
 import Semovientes.app.model.RegistroVacunas;
-import Semovientes.app.model.Animales;
-import Semovientes.app.model.Vacunas;
+import Semovientes.app.model.Animal;
+import Semovientes.app.model.Vacuna;
 import Semovientes.app.model.Usuario;
 import Semovientes.app.repository.RegistroVacunasRepository;
 import Semovientes.app.repository.AnimalesRepository;
@@ -33,11 +33,11 @@ public class RegistroVacunaService{
   public Optional<RegistroVacunas> obtenerRegistroDeVacunaPorId(Long idRegistro){
     return registroVacunasRepository.findById(idRegistro);}
 
-  public RegistroVacunas guardarRegistroDeVacuna(RegistroVacunas registroVacuna,Long animalId, Integer vacunaId, Long aplicadorId){
-    Animales animal = animalesRepository.findById(animalId)
+  public RegistroVacunas guardarRegistroDeVacuna(RegistroVacunas registroVacuna,Long animalId, Long vacunaId, Long aplicadorId){
+    Animal animal = animalesRepository.findById(animalId)
       .orElseThrow(()-> new RuntimeException("Animal no Encontrado"));
 
-    Vacunas vacuna= vacunasRepository.findById(vacunaId)
+    Vacuna vacuna= vacunasRepository.findById(vacunaId)
       .orElseThrow(()-> new RuntimeException("Vacuna no encontrada"));
 
     Usuario aplicador = usuarioRepository.findById(aplicadorId)
@@ -50,7 +50,7 @@ public class RegistroVacunaService{
     return registroVacunasRepository.save(registroVacuna);
   }
 
-  public Optional<RegistroVacunas> actualizarRegistro(Long id, RegistroVacunas nuevoRegistro, Long animalId, Integer vacunaId, Long aplicadorId){
+  public Optional<RegistroVacunas> actualizarRegistro(Long id, RegistroVacunas nuevoRegistro, Long animalId, Long vacunaId, Long aplicadorId){
     return registroVacunasRepository.findById(id)
             .map(registro ->{
               registro.setLoteVacuna(nuevoRegistro.getLoteVacuna());
@@ -60,13 +60,13 @@ public class RegistroVacunaService{
               registro.setViaAdministracion(nuevoRegistro.getViaAdministracion());
 
               if(animalId != null){
-                Animales animal = animalesRepository.findById(animalId)
+                Animal animal = animalesRepository.findById(animalId)
                         .orElseThrow(() -> new RuntimeException("Animal no encontrado"));
                  registro.setAnimal(animal);
               }
 
               if(vacunaId != null){
-                Vacunas vacuna = vacunasRepository.findById(vacunaId)
+                Vacuna vacuna = vacunasRepository.findById(vacunaId)
                         .orElseThrow(() -> new RuntimeException("Vacuna no Encontrada"));
                  registro.setVacuna(vacuna);
               }

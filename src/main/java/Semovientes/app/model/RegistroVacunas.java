@@ -12,11 +12,11 @@ public class RegistroVacunas {
 
     @ManyToOne(fetch= FetchType.LAZY)
     @JoinColumn(name="animal_id")
-    private Animales animal;
+    private Animal animal;
 
     @ManyToOne(fetch= FetchType.LAZY)
     @JoinColumn(name="vacunaId")
-    private Vacunas vacuna;
+    private Vacuna vacuna;
 
     @ManyToOne(fetch= FetchType.LAZY)
     @JoinColumn(name="usuarioId")
@@ -51,11 +51,11 @@ public class RegistroVacunas {
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
-    public Animales getAnimal() { return animal; }
-    public void setAnimal(Animales animal) { this.animal = animal; }
+    public Animal getAnimal() { return animal; }
+    public void setAnimal(Animal animal) { this.animal = animal; }
 
-    public Vacunas getVacuna() { return vacuna; }
-    public void setVacuna(Vacunas vacuna) { this.vacuna = vacuna; }
+    public Vacuna getVacuna() { return vacuna; }
+    public void setVacuna(Vacuna vacuna) { this.vacuna = vacuna; }
 
     public Usuario getAplicador() { return aplicador; }
     public void setAplicador(Usuario aplicador) { this.aplicador = aplicador; }
