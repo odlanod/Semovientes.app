@@ -24,20 +24,20 @@ public class AnimalController {
         List<Animal> lista = animalesService.obtenerTodasLosAnimales();
         model.addAttribute("animales", lista);
         model.addAttribute("titulo", "Panel de Control Ganadero");
-        return "animales/listar-Animales.html"; // Nombre del archivo HTML en templates
+        return "animales/listar-Animales"; // Nombre del archivo HTML en templates
     }
 
     // 2. Formulario para agregar un nuevo animal
     @GetMapping("/nuevo")
     public String formularioNuevoAnimal(Model model) {
         model.addAttribute("animal", new Animal());
-        return "formulario-animal"; 
+        return "animales/formulario-animal"; 
     }
 
     // 3. Guardar el animal y regresar a la lista
     @PostMapping("/guardar")
     public String guardarAnimal(@ModelAttribute("animal") Animal animal) {
         animalesService.guardarAnimal(animal);
-        return "redirect:/vistas/animales";
+        return "redirect:/animales";
     }
 }
