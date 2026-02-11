@@ -10,11 +10,11 @@ import java.util.List;
 
 @Controller 
 @RequestMapping("/animales")
-public class AnimalViewController {
+public class AnimalController {
 
     private final AnimalesService animalesService;
 
-    public AnimalViewController(AnimalesService animalesService) {
+    public AnimalController(AnimalesService animalesService) {
         this.animalesService = animalesService;
     }
 
@@ -24,7 +24,7 @@ public class AnimalViewController {
         List<Animal> lista = animalesService.obtenerTodasLosAnimales();
         model.addAttribute("animales", lista);
         model.addAttribute("titulo", "Panel de Control Ganadero");
-        return "lista-animales"; // Nombre del archivo HTML en templates
+        return "animales/listar-Animales.html"; // Nombre del archivo HTML en templates
     }
 
     // 2. Formulario para agregar un nuevo animal

@@ -2,7 +2,7 @@
 package Semovientes.app.service;
 
 import Semovientes.app.model.Finca;
-import Semovientes.app.repository.FincaRepository;
+import Semovientes.app.repository.FincasRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,14 +12,17 @@ import java.util.Optional;
 @Service
 public class FincasService {
 
-    @Autowired
-    private FincaRepository fincasRepository;
+    private final FincasRepository fincasRepository;
+
+public FincasService(FincasRepository fincasRepository){
+    this.fincasRepository = fincasRepository;
+}
 
     public List<Finca> obtenerTodasLasFincas() {
         return fincasRepository.findAll();
     }
 
-    public Optional<Finca> obtenerFincaPorId(int id) {
+    public Optional<Finca> obtenerFincaPorId(long id) {
         return fincasRepository.findById(id);
     }
 
@@ -27,7 +30,7 @@ public class FincasService {
         return fincasRepository.save(finca);
     }
 
-    public Boolean eliminarFinca(int id) {
+    public Boolean eliminarFinca(long id) {
         if(fincasRepository.existsById(id)){
             fincasRepository.deleteById(id);
             return ! fincasRepository.existsById(id);
@@ -35,7 +38,7 @@ public class FincasService {
         }else{return false;}
 
     }
-    public Optional<Finca> actualizarFinca(int id,Finca fincaActualizada){
+    public Optional<Finca> actualizarFinca(long id,Finca fincaActualizada){
         return fincasRepository.findById(id)
                 .map(fincaExistente->{
                     fincaExistente.setNombre(fincaActualizada.getNombre());

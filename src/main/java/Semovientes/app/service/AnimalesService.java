@@ -46,7 +46,7 @@ public class AnimalesService {
     }
 
     @Transactional
-   public Optional<Animal> actualizarAnimales(long id,Animal animalActualizado, Integer fincaId, Long madreId, Long padreId) {
+   public Optional<Animal> actualizarAnimales(long id,Animal animalActualizado, Long fincaId, Long madreId, Long padreId) {
 
     return animalesRepository.findById(id).map(animal -> {
 
