@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/productos")
-public class ProductosController {
+public class ProductosRestController {
 
     private final ProductoService productoService;
 
