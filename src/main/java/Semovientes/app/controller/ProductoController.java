@@ -25,6 +25,6 @@ public class ProductoController {
     public String guardarProducto(@ModelAttribute("producto") Producto producto) {
         productoService.guardar(producto);
         // Usamos ruta relativa para evitar el error 404 en Codespaces
-        return "redirect:../productos"; 
+        return "redirect:."; 
     }
 }
