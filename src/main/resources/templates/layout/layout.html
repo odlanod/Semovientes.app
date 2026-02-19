@@ -21,12 +21,40 @@
                 <h4 class="text-success fw-bold">SEMOVIENTES</h4>
             </div>
             <nav class="nav flex-column mt-3">
-                <a class="nav-link" th:href="@{/dashboard}"><i class="bi bi-speedometer2 me-2"></i> Inicio</a>
-                <a class="nav-link" th:href="@{/animales}"><i class="bi bi-cow me-2"></i> Animales</a>
-                <a class="nav-link" th:href="@{/productos}"><i class="bi bi-box-seam me-2"></i> Inventario</a>
-                <a class="nav-link" th:href="@{/configuracion}"><i class="bi bi-gear me-2"></i> Configuración</a>
+                <a class="nav-link" th:href="@{/dashboard}">
+                    <i class="bi bi-speedometer2 me-2"></i> Inicio
+                </a>
+
+                <a class="nav-link" th:href="@{/animales}">
+                    <i class="bi bi-cow me-2"></i> Animales
+                </a>
+
+                <div class="nav-item">
+                    <a class="nav-link d-flex justify-content-between align-items-center" 
+                    data-bs-toggle="collapse" 
+                    href="#menuConfiguracion" 
+                    role="button" 
+                    aria-expanded="false">
+                        <span><i class="bi bi-gear me-2"></i> Configuración</span>
+                        <i class="bi bi-chevron-down small"></i>
+                    </a>
+                    
+                    <div class="collapse" id="menuConfiguracion">
+                        <div class="bg-dark ms-3 rounded">
+                            <a class="nav-link small py-2" th:href="@{/productos}">
+                                <i class="bi bi-box-seam me-2"></i> Productos (Insumos)
+                            </a>
+                            <a class="nav-link small py-2" th:href="@{/fincas}">
+                                <i class="bi bi-house-door me-2"></i> Fincas
+                            </a>
+                            <a class="nav-link small py-2" th:href="@{/usuarios}">
+                                <i class="bi bi-person-gear me-2"></i> Usuarios
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </nav>
-        </div>
+            </div>
 
         <div class="main-content d-flex flex-column">
             <header class="top-navbar p-3 d-flex justify-content-between align-items-center">
