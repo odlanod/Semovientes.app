@@ -40,7 +40,6 @@ public class ProductoService {
                   producto.setNombre(productos.getNombre());
                   producto.setTipoProducto(productos.getTipoProducto());
                   producto.setUnidadMedida(productos.getUnidadMedida());
-                  producto.setValorUnitario(productos.getValorUnitario());
                   producto.setEstado(productos.getEstado());
 
                   return productoRepository.save(producto);
