@@ -29,9 +29,11 @@ public class ProductoService {
     }
 
 
-    public Producto guardarProducto(Producto productos){
-        return productoRepository.save(productos);
-    }
+    public Producto guardarProducto(Producto producto){
+            if (producto.getEstado() == null || producto.getEstado().isEmpty()) {
+                producto.setEstado("Activo");
+            return productoRepository.save(producto);
+                                }
 
 
     public Optional<Producto> actualizarProducto(long id, Producto productos){
