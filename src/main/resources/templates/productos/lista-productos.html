@@ -35,8 +35,8 @@
                                 <td th:text="${p.tipoProducto}"></td>
                                 <td th:text="${p.unidadMedida}"></td>
                                 <td>
-                                    <span th:class="${p.estado ? 'badge rounded-pill bg-success-subtle text-success' : 'badge rounded-pill bg-danger-subtle text-danger'}" 
-                                        th:text="${p.estado ? 'Activo' : 'Inactivo'}"
+                                    <span th:class="${p.estado == 'Activo' ? 'badge rounded-pill bg-success-subtle text-success' : 'badge rounded-pill bg-danger-subtle text-danger'}" 
+                                        th:text="${p.estado == 'Activo' ? 'Activo' : 'Inactivo'}"
                                         style="padding: 0.5em 1em;"></span>
                                 </td>
                                 <td class="text-end pe-4">
