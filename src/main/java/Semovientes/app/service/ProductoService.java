@@ -30,8 +30,6 @@ public class ProductoService {
 
 
     public Producto guardarProducto(Producto producto){
-            if (producto.getEstado() == null || producto.getEstado().isEmpty()) {
-                producto.setEstado("Activo");
             return productoRepository.save(producto);
                                 }
 

@@ -18,7 +18,6 @@ public class ProductoController {
 
     @GetMapping
     public String listarProductos(Model model) {
-        // Asegúrate de que en tu ProductoService el método se llame así
         model.addAttribute("productos", productoService.obtenerTodosLosProductos());
         model.addAttribute("titulo", "Inventario de Insumos");
         return "productos/lista-productos"; 
@@ -33,7 +32,6 @@ public class ProductoController {
     @PostMapping("/guardar")
     public String guardarProducto(@ModelAttribute("producto") Producto producto) {
         productoService.guardarProducto(producto);
-        // El punto "." es la mejor opción para Codespaces
         return "redirect:."; 
     }
 }

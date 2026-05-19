@@ -3,7 +3,7 @@ import jakarta.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "Productos")
+@Table(name = "Producto")
 public class Producto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,10 +19,10 @@ public class Producto {
     private String unidadMedida;
 
     @Column(name="estado_producto", nullable=false)
-    private boolean estado;
+    private String estado ="Activo";
 
     /**************************CONSTRUCTORES*************************/
-    public Producto(String nombre, String tipoProducto, String unidadMedida, boolean estado) {
+    public Producto(String nombre, String tipoProducto, String unidadMedida, String estado) {
         this.nombre = nombre;
         this.tipoProducto = tipoProducto;
         this.unidadMedida = unidadMedida;
@@ -64,11 +64,11 @@ public class Producto {
         this.unidadMedida = unidadMedida;
     }
 
-    public boolean getEstado() {
+    public String getEstado() {
         return estado;
     }
 
-    public void setEstado(boolean estado) {
+    public void setEstado(String estado) {
         this.estado = estado;
     }
 
